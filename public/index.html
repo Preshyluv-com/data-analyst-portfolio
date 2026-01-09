@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Analyst Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <img src="Image2.jpeg" alt="Profile Photo" class="profile-img">
+    <h1>Isaac Precious</h1>
+    <p class="subtitle">
+      Data Analyst & Researcher
+    </p>
+    <p class="skills">
+      Excel • Power BI • SQL • Python • SPSS • GraphPad Prism • Data Visualization
+    </p>
+  </div>
+</header>
+
+<main>
+
+<section class="card">
+  <h2>Contact Information</h2>
+
+  <div class="contact-grid">
+    <p><strong>Email:</strong> isaacprecious2017@gmail.com</p>
+    <p><strong>Phone:</strong> +234 816 303 2108</p>
+    <p><strong>Location:</strong> Abuja, Nigeria</p>
+  </div>
+
+  <div class="contact-links">
+    <a href="https://wa.me/2348163032108" target="_blank" class="btn whatsapp">
+      WhatsApp
+    </a>
+    <a href="mailto:isaacprecious2017@gmail.com" class="btn email">
+      Send Email
+    </a>
+  </div>
+</section>
+
+<section class="card">
+  <h2>About Me</h2>
+  <p style="text-align: justify;">
+    I am a highly skilled Data Analyst and Researcher with strong expertise in data
+    collection, cleaning, analysis, visualization, and reporting. I use tools such
+    as Excel, Power BI, SQL, Python, SPSS, and R to transform raw data into
+    meaningful insights that support data-driven decision-making.
+  </p>
+  <p style="text-align: justify;">
+    I am also experienced in academic and professional research, applying sound
+    statistical methods and presenting complex findings clearly to both technical
+    and non-technical audiences.
+  </p>
+</section>
+
+<section class="card">
+  <h2>Upload Reports (PDF / Excel / Docx / Image / Xml)</h2>
+  <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+    <input type="file" name="file" accept=".pdf,.xls,.xlsx,.doc,.docx,.xml,.jpg,.jpeg,.png,.webp" required />
+    <button type="submit" class="btn primary">Upload File</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Portfolio Documents</h2>
+  <ul id="fileList" class="file-list"></ul>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 YOUR ISAAC PRECIOUS • Data Analyst</p>
+</footer>
+
+<script>
+function loadFiles() {
+  fetch("/files")
+    .then(res => res.json())
+    .then(files => {
+      const list = document.getElementById("fileList");
+      list.innerHTML = "";
+
+      files.forEach(file => {
+        const ext = file.split(".").pop().toLowerCase();
+        const li = document.createElement("li");
+
+        let preview = "";
+        if (["jpg","jpeg","png","webp"].includes(ext)) {
+          preview = `<img src="/uploads/${file}" class="preview-img">`;
+        }
+
+        li.innerHTML = `
+          ${preview}
+          <a href="/uploads/${file}" target="_blank">${file}</a>
+          <button class="delete-btn">Delete</button>
+        `;
+
+        li.querySelector(".delete-btn").onclick = () => {
+          if (!confirm("Delete this file permanently?")) return;
+
+          fetch("/delete", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ file })
+          })
+          .then(res => res.json())
+          .then(() => loadFiles())
+          .catch(err => console.error(err));
+        };
+
+        list.appendChild(li);
+      });
+    });
+}
+
+loadFiles();
+</script>
+
+
+</body>
+</html>

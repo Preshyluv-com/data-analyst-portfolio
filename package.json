@@ -1,0 +1,13 @@
+{
+  "name": "data-analyst-portfolio",
+  "version": "1.0.0",
+  "description": "Data Analyst Portfolio Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

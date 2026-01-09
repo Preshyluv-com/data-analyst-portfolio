@@ -1,0 +1,180 @@
+:root {
+  --primary: #0b3c5d;
+  --secondary: #1d6fa5;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1f2933;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgb(235, 226, 226);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+.skills {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* MAIN */
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+/* CONTACT */
+.contact-grid p {
+  margin: 5px 0;
+}
+
+.contact-links {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.btn.primary {
+  background: var(--primary);
+  border: none;
+  cursor: pointer;
+}
+
+.btn.whatsapp {
+  background: #25d366;
+}
+
+.btn.email {
+  background: #6b7280;
+}
+
+/* UPLOAD */
+.upload-form input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* FILE LIST */
+.file-list {
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  margin-bottom: 8px;
+}
+
+.file-list a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.file-list a:hover {
+  text-decoration: underline;
+}
+
+.delete-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+
+.preview-img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .profile-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .hero {
+    padding: 40px 15px;
+  }
+}
+@media (max-width: 400px) {
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
